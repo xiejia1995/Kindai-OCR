@@ -15,10 +15,6 @@ For text line extraction, we retrain the CRAFT (Character Region Awareness for T
 For text line recognition, we employ the attention-based encoder-decoder on our previous publication. We train the text line recognition on 1000 annotated images and 1600 unannotated images provided by Center for Research and Development of Higher Education, The University of Tokyo and National Institute for Japanese Language and Linguistics, respectively.
 
 
-
-
-
-
 ## Installing Kindai OCR
 python==3.7.4   
 torch==1.4.0   
@@ -57,3 +53,49 @@ We thank The Center for Research and Development of Higher Education, The Univer
 Dr. Anh Duc Le, email: leducanh841988@gmail.com or anh@ism.ac.jp    
 
 
+---
+
+## Colab Usage
+1. CHANGE TO PYTHON3.8
+```
+!sudo update-alternatives --config python3
+!python3 --version
+```
+or we may need to reinstall pip/distutils/apt
+!python -m pip uninstall pip
+!sudo apt install python3-pip
+!apt-get install python3.8-distutils
+!apt-get install python3.8-apt
+
+2. mount Drive and import OS
+```
+from google.colab import drive
+drive.mount("/content/drive")
+
+import os
+path="/content/drive/MyDrive/Kindai-OCR"
+os.chdir(path)
+os.listdir(path)
+
+```
+
+3. install requirements
+```
+#torch
+!python3.8 -m pip install torch==1.4.0+cu92 -f https://download.pytorch.org/whl/torch_stable.html
+#torchvision
+!python3.8 -m pip install torchvision==0.5.0+cu92 -f https://download.pytorch.org/whl/torch_stable.html
+```
+use the uptodate numpy(e.g. 1.24) and scipy(e.g. 1.8.0) matplotlib==3.2
+```
+#install others
+!python3.8 -m pip install opencv-python==4.2.0.32 -f https://download.pytorch.org/whl/torch_stable.html
+!python3.8 -m pip install scikit-image==0.14.2 -f https://download.pytorch.org/whl/torch_stable.html
+!python3.8 -m pip install Polygon3
+!python3.8 -m pip install numpy==1.24 scipy==1.8 matplotlib==3.2
+!python3.8 -m pip install pillow==4.3.0 -f https://download.pytorch.org/whl/torch_stable.html
+```
+4. Run
+```
+!python test.py --cuda==True
+```
